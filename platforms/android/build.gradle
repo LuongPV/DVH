@@ -5,10 +5,11 @@ apply plugin: 'android'
 buildscript {
     repositories {
         mavenCentral()
+        google()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.10.+'
+        classpath 'com.android.tools.build:gradle:3.0.1'
     }
 }
 
@@ -39,7 +40,7 @@ android {
     }
 
     compileSdkVersion 19
-    buildToolsVersion "19.0.0"
+    buildToolsVersion '26.0.2'
 
     if (multiarch || System.env.BUILD_MULTIPLE_APKS) {
         productFlavors {
@@ -91,4 +92,8 @@ def getProjectList() {
       projects.add(":" + matcher.group(2).replace("/",":"))
     }
     return projects
+}
+
+repositories {
+    google()
 }
